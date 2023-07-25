@@ -101,5 +101,22 @@ function interpretDate() {
     var value_d = calculate_value_d(month_number, day_number, value_c);
 
     var result = interpret_value_d(value_d);
-    document.getElementById("result").innerText = "解释结果：" + result;
+
+    // Display the result and its explanation on the webpage
+    var resultElement = document.getElementById("result");
+    resultElement.innerText = "解释结果：" + result;
+
+    var explanations = {
+        1: "大安：大安事事昌，求财在坤方，失物去不远，宅舍保安康。",
+        2: "留连：留连事难成，求谋日未明，官事只宜缓，去者未回程。",
+        3: "速喜：速喜喜来临，求财向南行，失物申午未，逢人路上寻。",
+        4: "赤口：赤口主口舌，是非要紧防，失物速速讨，行人有惊慌。",
+        5: "小吉：小吉最吉昌，路上好商量，阴人来报喜，失物在坤方。",
+        0: "空亡：空亡事不祥，阴人少乖张，求财无利益，行人有灾殃。" // Note: 0 corresponds to "空亡" instead of 6
+    };
+
+    var explanation = explanations[value_d];
+    var explanationElement = document.createElement("p");
+    explanationElement.innerText = explanation;
+    resultElement.appendChild(explanationElement);
 }
